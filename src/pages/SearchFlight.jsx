@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const SearchFlight = () => {
   return (
     <div>
-      <h1 className="text-[22px] font-bold text-center">Search Flight</h1>
+      <h1 className="text-[18px] font-bold text-center">Search Flight</h1>
       {/* search form */}
       <div className="mt-6">
         <form>
@@ -91,10 +91,10 @@ const SearchFlight = () => {
             </div>
           </div>
           {/* submit */}
-          <div className="mt-8 flex">
+          <div className="mt-8 flex justify-center">
             <Link
               to="/flightlistings"
-              className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md w-[100%]"
+              className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md fixed bottom-2 w-[318px]"
             >
               Search Flight
             </Link>
