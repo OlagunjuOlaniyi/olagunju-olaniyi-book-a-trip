@@ -7,16 +7,18 @@ import { Link } from "react-router-dom";
 const FlightListings = () => {
   return (
     <div>
-      <div className="flex items-center justify-between mb-3 w-full">
-        <Link to="/" className="w-10">
+      <div className="flex items-center gap-10 mb-3 ">
+        <Link to="/" className="flex-none text-center">
           <img className="h-full" src={ArrowBack} alt="" />
         </Link>
-        <h1 className="text-[22px] font-bold w-90">Flight Listings</h1>
+        <h1 className="text-[22px] flex-grow-1 text-center font-bold w-90">
+          Flight Listings
+        </h1>
       </div>
       {/* info */}
       <div className="bg-[#fff] p-3 mt-3">
-        <div className="mb-4">
-          <img src={Line} alt="" />
+        <div className="p-4">
+          <img className="mx-auto" src={Line} alt="" />
         </div>
         <div className="flex justify-between mt-4">
           <div>
