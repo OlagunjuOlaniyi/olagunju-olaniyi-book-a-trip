@@ -12,3 +12,11 @@ body {
   padding: 20px 30px;
   margin: auto;
 }
+
+@media screen and (max-width: 680px) {
+  .mobile__layout {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 20px 30px;
+  }
+}
