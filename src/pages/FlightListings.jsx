@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ArrowBack from "../assets/icons/arrow-back.png";
 import Flightline from "../assets/icons/flightline.svg";
 import Time from "../assets/icons/date.svg";
 import Flightseat from "../assets/icons/flightseat.svg";
-import Flight from "../assets/icons/flight.png";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+import { useStateValue } from "../context/StateProvider";
+import Listings from "../components/Listings";
 
 const FlightListings = () => {
+  const [{ basket }, dispatch] = useStateValue();
+  const [flightlisting, setFlightlisting] = useState([]);
+
+
+
+  async function fetchData() {
+    const data = await import("../api/flight-listing.json");
+    setFlightlisting(data.default);
+
+    // console.log("airport", data.default);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="flex items-center mb-3 ">
@@ -56,43 +76,9 @@ const FlightListings = () => {
           <p className="text-[#223e7c] font-bold">6 Flights</p>
         </div>
 
-        {[1, 2, 3, 4].map((index) => {
+        {flightlisting.map((flight, index) => {
           return (
-            <div className="mt-4 py-3 px-3 flex flex-col bg-white rounded-md border">
-              <div className="flex justify-between items-end">
-                <div className="flex-none">
-                  <h2 className="text-[16px] font-bold">06:45 am</h2>
-                  <p className="text-[#434455]">NBO</p>
-                </div>
-                <div className="flex text-[#72737f] text-[13px] flex-col items-center">
-                  <p>4h 20m</p>
-                  <img src={Flight} alt="" />
-                  <p>Non-stop</p>
-                </div>
-                <div className="text-right flex-none">
-                  <h2 className="text-[16px] font-bold">10:45 am</h2>
-                  <p className="text-[#434455]">MBA</p>
-                </div>
-              </div>
-              {/*  */}
-              <div className="flex justify-between mt-4">
-                <ul className="list-disc list-inside flex gap-2 text-[#72737f] text-[14px]">
-                  <li className="list-none">Kenya Airways</li>
-                  <li>Economy</li>
-                </ul>
-                <p className="text-[#15162b] font-semibold">N 350,000.00</p>
-              </div>
-              {/*  */}
-
-              <div className="mt-8 flex">
-                <Link
-                  to="/payment"
-                  className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md w-[100%]"
-                >
-                  Make Payment
-                </Link>
-              </div>
-            </div>
+            <Listings flight={flight} index={index} />
           );
         })}
       </div>

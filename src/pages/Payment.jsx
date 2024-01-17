@@ -5,12 +5,21 @@ import Time from "../assets/icons/date.svg";
 import Flightseat from "../assets/icons/flightseat.svg";
 import Flight from "../assets/icons/flight.png";
 import { Link } from "react-router-dom";
+import { useStateValue } from "../context/StateProvider";
 
 const Payment = () => {
+  const [{ basket, user }, dispatch] = useStateValue();
+  const emptyBasket = () => {
+    // dispatch some item into the data layer
+    dispatch({
+      type: "EMPTY_BASKET",
+    });
+  };
   return (
     <div>
       <div className="flex items-center mb-3 ">
         <Link
+          onClick={emptyBasket}
           to="/flightlistings"
           className="flex-none text-center p-2 rounded-sm bg-white"
         >
@@ -52,44 +61,49 @@ const Payment = () => {
       </div>
 
       {/* Summary */}
-      <div className="mt-5">
-        <h2 className="text-[#565656] font-bold text-[14px]">Summary</h2>
+      {basket.map((bask) => {
+        return (
+          <div className="mt-5">
+            <h2 className="text-[#565656] font-bold text-[14px]">Summary</h2>
 
-        <div className="rounded-md bg-white py-3 px-4 mt-2">
-          <div className="flex justify-between mb-2">
-            <p className="text-[#bababa] font-semibold text-[14px]">
-              Ticket fare
-            </p>
-            <p className="font-bold text-[16px]">N 350,000.00</p>
-          </div>
-          <div className="flex justify-between">
-            <p className="text-[#bababa] font-semibold  text-[14px]">
-              Service Charges
-            </p>
-            <p className="font-bold text-[16px]">N 1,000.00</p>
-          </div>
-        </div>
+            <div className="rounded-md bg-white py-3 px-4 mt-2">
+              <div className="flex justify-between mb-2">
+                <p className="text-[#bababa] font-semibold text-[14px]">
+                  Ticket fare
+                </p>
+                <p className="font-bold text-[16px]">N {bask.price}</p>
+              </div>
+              <div className="flex justify-between">
+                <p className="text-[#bababa] font-semibold  text-[14px]">
+                  Service Charges
+                </p>
+                <p className="font-bold text-[16px]">N {bask.charges}</p>
+              </div>
+            </div>
 
-        {/* total */}
-        <div className="rounded-md bg-white py-3 px-4 mt-3">
-          <div className="flex justify-between mb-2">
-            <p className="text-[#223e7c] font-semibold text-[14px]">
-              Total Amount
-            </p>
-            <p className="font-bold text-[16px]">N 351,000.00</p>
-          </div>
-        </div>
+            {/* total */}
+            <div className="rounded-md bg-white py-3 px-4 mt-3">
+              <div className="flex justify-between mb-2">
+                <p className="text-[#223e7c] font-semibold text-[14px]">
+                  Total Amount
+                </p>
+                <p className="font-bold text-[16px]">N {bask.total}</p>
+              </div>
+            </div>
 
-        {/* button */}
-        <div className="mt-8 flex justify-center">
-          <Link
-            to="/"
-            className="bg-[#223e7c] fixed bottom-2 py-3 px-3 text-center text-[#fff] rounded-md w-[318px]"
-          >
-            Pay N 351,000.00
-          </Link>
-        </div>
-      </div>
+            {/* button */}
+            <div className="mt-8 flex justify-center">
+              <Link
+                onClick={emptyBasket}
+                to="/"
+                className="bg-[#223e7c] fixed bottom-2 py-3 px-3 text-center text-[#fff] rounded-md w-[318px]"
+              >
+                Pay N {bask.total}
+              </Link>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
