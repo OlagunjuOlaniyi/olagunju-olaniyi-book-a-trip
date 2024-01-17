@@ -1,15 +1,24 @@
 export const initialState = {
   basket: [],
-  user: null,
+  search: [],
 };
 
-// Selector
-export const getBasketTotal = (basket) =>
-  basket?.reduce((amount, item) => item.price + amount, 0);
-
 const reducer = (state, action) => {
-  console.log(action);
+  console.log("action", action);
+
   switch (action.type) {
+    case "ADD_TO_SEARCH":
+      return {
+        ...state,
+        search: [...state.search, action.item],
+      };
+
+    case "EMPTY_SEARCH":
+      return {
+        ...state,
+        search: [],
+      };
+
     case "ADD_TO_BASKET":
       return {
         ...state,

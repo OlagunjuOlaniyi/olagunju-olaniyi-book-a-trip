@@ -13,7 +13,6 @@ const Listings = ({ flight, index }) => {
       item: {
         id: 1,
         title: "kenya airways",
-        // image: image,
         price: flight.TicketFare,
         charges: flight.ServiceCharge,
         total: flight.TicketFare + flight.ServiceCharge,
