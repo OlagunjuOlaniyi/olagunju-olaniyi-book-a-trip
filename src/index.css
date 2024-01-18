@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 body {
-  background-color: #0f515f;
+  background-color: #223e7c;
 }
 
 .mobile__layout {
   width: 428px;
   background-color: #f2f2f2;
-  padding: 20px 30px;
+  padding: 20px 0px;
   margin: auto;
 }
 

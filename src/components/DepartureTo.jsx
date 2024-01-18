@@ -3,15 +3,7 @@ import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
 import { useStateValue } from "../context/StateProvider";
 
-const DepartureFrom = ({
-  airports,
-  closeTo,
-  setSearchTo,
-  setCodeTo,
-  setCountryFrom,
-}) => {
-  const [{ search }, dispatch] = useStateValue();
-
+const DepartureFrom = ({ airports, closeTo, setSearchTo, setCodeTo }) => {
   const handleClick = (Name, Code) => {
     setSearchTo(Name);
     setCodeTo(Code);
@@ -19,11 +11,8 @@ const DepartureFrom = ({
     closeTo(false);
   };
 
-  //   const departure = AutoSuggest("");
-  //   const arrival = AutoSuggest("");
-
   return (
-    <div className="bg-white py-3 px-4 rounded-md mt-2">
+    <div className="bg-white py-3 px-4 rounded-md mt-2 lg:relative fixed bottom-0 right-0 left-0 h-[90vh] z-10 overflow-y-auto">
       <div className="flex justify-center">
         <img src={popline} alt="" />
       </div>

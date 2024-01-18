@@ -33,7 +33,7 @@ const FlightListings = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="px-5">
       <div className="flex items-center mb-3 ">
         <Link
           onClick={emptySearch}
@@ -48,39 +48,43 @@ const FlightListings = () => {
       </div>
       {/* info */}
 
-      {search.map(({ from, to, codeFrom, codeTo, adult, children, infant }) => {
-        return (
-          <div className="bg-[#fff] py-3 px-4 mt-6 rounded-md">
-            <div className="p-4">
-              <img className="mx-auto" src={Flightline} alt="" />
-            </div>
-            <div className="flex justify-between">
-              <div>
-                <h1 className="font-bold text-[20px]">{codeFrom}</h1>
-                <p className="text-[10px]">{from}</p>
-                <div className="flex mt-4">
-                  <img src={Time} className="mr-2" alt="" />
-                  <p className="font-bold text-[13px]">Sat, 12 Mar</p>
-                </div>
+      {search.map(
+        ({ from, to, codeFrom, codeTo, adult, children, infant, date }) => {
+          return (
+            <div className="bg-[#fff] py-3 px-4 mt-6 rounded-md">
+              <div className="p-4">
+                <img className="mx-auto" src={Flightline} alt="" />
               </div>
-              <div className="text-right">
-                <h1 className="font-bold text-[20px]">{codeTo}</h1>
-                <p className="text-[10px]">{to}</p>
-                <div className="flex mt-4 items-center">
-                  <img src={Flightseat} className="mr-2" alt="" />
-                  <div className="flex">
-                    <ul className="text-[9px] font-bold flex gap-1 list-disc list-inside">
-                      <li className="list-none">{adult} Adults</li>
-                      <li>{children} Children</li>
-                      <li>{infant} Infant</li>
-                    </ul>
+              <div className="flex justify-between">
+                <div>
+                  <h1 className="font-bold text-[20px]">{codeFrom}</h1>
+                  <p className="text-[10px]">{from}</p>
+                  <div className="flex mt-4">
+                    <img src={Time} className="mr-2" alt="" />
+                    <p className="font-bold text-[13px]">
+                      {date.substring(0, 10)}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <h1 className="font-bold text-[20px]">{codeTo}</h1>
+                  <p className="text-[10px]">{to}</p>
+                  <div className="flex mt-4 items-center">
+                    <img src={Flightseat} className="mr-2" alt="" />
+                    <div className="flex">
+                      <ul className="text-[9px] font-bold flex gap-1 list-disc list-inside">
+                        <li className="list-none">{adult} Adults</li>
+                        <li>{children} Children</li>
+                        <li>{infant} Infant</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        }
+      )}
 
       {/* Available flight */}
       {search.map((sea) => {

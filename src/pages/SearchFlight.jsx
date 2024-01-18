@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PlaneUp from "../assets/icons/plane.svg";
-import PlaneTo from "../assets/icons/PlaneTo.svg";
+import PlaneDown from "../assets/icons/planeDown.svg";
+import Calender from "../assets/icons/calender.svg";
 import Passenger from "../assets/icons/airline-seat.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DepartureFrom from "../components/DepartureFrom";
 import DepartureTo from "../components/DepartureTo";
+import CalendarDate from "../components/CalendarDate";
 import { useStateValue } from "../context/StateProvider";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 const SearchFlight = () => {
   const [airports, setAirports] = useState([]);
@@ -19,13 +21,7 @@ const SearchFlight = () => {
   const [searchTo, setSearchTo] = useState("");
   const [codeFrom, setCodeFrom] = useState("");
   const [codeTo, setCodeTo] = useState("");
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
+  const [value, onChange] = useState("");
 
   const [options, setOptions] = useState({
     adult: 1,
@@ -43,14 +39,6 @@ const SearchFlight = () => {
     });
   };
 
-  const variant = {
-    visible: { scale: 1 },
-    hidden: { scale: 0 },
-  };
-
-  // const departureSuggest = AutoSuggest("");
-  // const arrivalSuggest = AutoSuggest("");
-
   async function fetchData() {
     const data = await import("../api/airports.json");
     setAirports(data.default);
@@ -65,7 +53,7 @@ const SearchFlight = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (searchFrom && searchTo) {
+    if (searchFrom && searchTo && value) {
       dispatch({
         type: "ADD_TO_SEARCH",
         item: {
@@ -76,6 +64,7 @@ const SearchFlight = () => {
           adult: options.adult,
           children: options.children,
           infant: options.infant,
+          date: value.toString(),
         },
       });
 
@@ -90,7 +79,7 @@ const SearchFlight = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="px-5">
       <h1 className="text-[18px] font-bold text-center">Search Flight</h1>
 
       {/* search form */}
@@ -126,15 +115,6 @@ const SearchFlight = () => {
               />
             </motion.div>
           )}
-          {/* 
-          <motion.div transition={{ delay: 1 }}>
-            <h1>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At et
-              impedit blanditiis? Ut, totam quibusdam ipsa veritatis velit ipsam
-              inventore molestias distinctio hic excepturi eius soluta repellat
-              voluptates! Reiciendis, aperiam!
-            </h1>
-          </motion.div> */}
 
           <div className="mt-3 relative">
             <input
@@ -146,7 +126,7 @@ const SearchFlight = () => {
             />
 
             <span className="absolute left-[12px] top-[20px]">
-              <img src={PlaneUp} className="text-[50px] z-10" alt="" />
+              <img src={PlaneDown} className="text-[50px] z-10" alt="" />
             </span>
           </div>
           {openTo && (
@@ -167,14 +147,28 @@ const SearchFlight = () => {
           <div className="mt-3 relative">
             <input
               className="w-[100%] py-3 px-8 rounded-sm"
-              placeholder="To"
-              type="date"
+              placeholder="Departure"
+              value={value.toString().substring(0, 10)}
+              onClick={(e) => setOpenDate(true)}
               required
             />
             <span className="absolute left-[12px] top-[20px]">
-              <img src={PlaneUp} className="text-[50px] z-10" alt="" />
+              <img src={Calender} className=" z-10" alt="" />
             </span>
           </div>
+          {/* calendar */}
+          {openDate && (
+            <motion.div
+              animate={{ scale: [0, 1] }}
+              transition={{ from: 90, delay: 0.2 }}
+            >
+              <CalendarDate
+                value={value}
+                onChange={onChange}
+                setOpenDate={setOpenDate}
+              />
+            </motion.div>
+          )}
 
           <div className="flex gap-3 mt-5 items-center">
             <img src={Passenger} className="h-full" alt="" />
@@ -270,7 +264,7 @@ const SearchFlight = () => {
               type="submit"
               onClick={handleSubmit}
               // onClick={() => navigate("/flightlistings")}
-              className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md fixed bottom-2 w-[318px]"
+              className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md w-[318px]"
             >
               Search Flight
             </button>

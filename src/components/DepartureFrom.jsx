@@ -7,14 +7,6 @@ const DepartureFrom = ({ airports, closeFrom, setSearchFrom, setCodeFrom }) => {
   const [{ search }, dispatch] = useStateValue();
 
   const handleClick = (Name, Code) => {
-    // dispatch({
-    //   type: "ADD_TO_SEARCH",
-    //   item: {
-    //     nameFrom: Name,
-    //     codeFrom: Code,
-    //   },
-    // });
-
     setSearchFrom(Name);
     setCodeFrom(Code);
 
@@ -22,7 +14,7 @@ const DepartureFrom = ({ airports, closeFrom, setSearchFrom, setCodeFrom }) => {
   };
 
   return (
-    <div className="bg-white py-3 px-4 rounded-md mt-2">
+    <div className="bg-white py-3 px-4 rounded-md mt-2 lg:relative fixed bottom-0 right-0 left-0 h-[90vh] z-10 overflow-y-auto">
       <div className="flex justify-center">
         <img src={popline} alt="" />
       </div>
