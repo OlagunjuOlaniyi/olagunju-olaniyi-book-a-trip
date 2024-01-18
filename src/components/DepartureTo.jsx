@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
-import { useStateValue } from "../context/StateProvider";
 
 const DepartureFrom = ({
   airports,

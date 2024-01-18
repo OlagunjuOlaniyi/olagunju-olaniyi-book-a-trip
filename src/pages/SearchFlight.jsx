@@ -8,7 +8,7 @@ import DepartureFrom from "../components/DepartureFrom";
 import DepartureTo from "../components/DepartureTo";
 import CalendarDate from "../components/CalendarDate";
 import { useStateValue } from "../context/StateProvider";
-import { motion } from "framer-motion";
+
 
 const SearchFlight = () => {
   const [airports, setAirports] = useState([]);
