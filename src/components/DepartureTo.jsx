@@ -3,7 +3,13 @@ import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
 import { useStateValue } from "../context/StateProvider";
 
-const DepartureFrom = ({ airports, closeTo, setSearchTo, setCodeTo }) => {
+const DepartureFrom = ({
+  airports,
+  closeTo,
+  openTo,
+  setSearchTo,
+  setCodeTo,
+}) => {
   const handleClick = (Name, Code) => {
     setSearchTo(Name);
     setCodeTo(Code);
@@ -12,7 +18,11 @@ const DepartureFrom = ({ airports, closeTo, setSearchTo, setCodeTo }) => {
   };
 
   return (
-    <div className="bg-white py-3 px-4 rounded-md mt-2 lg:relative fixed bottom-0 right-0 left-0 h-[90vh] z-10 overflow-y-auto">
+    <div
+      className={`bg-white  rounded-md fixed lg:w-[390px] lg:mx-auto transform right-0 bottom-0 left-0 z-10 overflow-y-auto ${
+        openTo ? "h-[90vh] py-3 px-4" : "h-[0vh]"
+      } transition-all ease-in duration-500`}
+    >
       <div className="flex justify-center">
         <img src={popline} alt="" />
       </div>

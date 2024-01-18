@@ -98,23 +98,15 @@ const SearchFlight = () => {
               <img src={PlaneUp} className="text-[50px] z-10" alt="" />
             </span>
           </div>
-          {openFrom && (
-            <motion.div
-              animate={{ scale: [0, 1] }}
-              transition={{ from: 90, delay: 0.2 }}
-            >
-              <DepartureFrom
-                airports={airports}
-                closeFrom={setOpenFrom}
-                setCountryFrom={setAirports}
-                setSearchFrom={setSearchFrom}
-                setCodeFrom={setCodeFrom}
-                data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-              />
-            </motion.div>
-          )}
+
+          <DepartureFrom
+            airports={airports}
+            closeFrom={setOpenFrom}
+            openFrom={openFrom}
+            setCountryFrom={setAirports}
+            setSearchFrom={setSearchFrom}
+            setCodeFrom={setCodeFrom}
+          />
 
           <div className="mt-3 relative">
             <input
@@ -129,20 +121,15 @@ const SearchFlight = () => {
               <img src={PlaneDown} className="text-[50px] z-10" alt="" />
             </span>
           </div>
-          {openTo && (
-            <motion.div
-              animate={{ scale: [0, 1] }}
-              transition={{ from: 90, delay: 0.2 }}
-            >
-              <DepartureTo
-                airports={airports}
-                closeTo={setOpenTo}
-                setCountryFrom={setAirports}
-                setSearchTo={setSearchTo}
-                setCodeTo={setCodeTo}
-              />
-            </motion.div>
-          )}
+
+          <DepartureTo
+            airports={airports}
+            closeTo={setOpenTo}
+            openTo={openTo}
+            setCountryFrom={setAirports}
+            setSearchTo={setSearchTo}
+            setCodeTo={setCodeTo}
+          />
 
           <div className="mt-3 relative">
             <input
@@ -157,18 +144,13 @@ const SearchFlight = () => {
             </span>
           </div>
           {/* calendar */}
-          {openDate && (
-            <motion.div
-              animate={{ scale: [0, 1] }}
-              transition={{ from: 90, delay: 0.2 }}
-            >
-              <CalendarDate
-                value={value}
-                onChange={onChange}
-                setOpenDate={setOpenDate}
-              />
-            </motion.div>
-          )}
+
+          <CalendarDate
+            value={value}
+            onChange={onChange}
+            openDate={openDate}
+            setOpenDate={setOpenDate}
+          />
 
           <div className="flex gap-3 mt-5 items-center">
             <img src={Passenger} className="h-full" alt="" />
