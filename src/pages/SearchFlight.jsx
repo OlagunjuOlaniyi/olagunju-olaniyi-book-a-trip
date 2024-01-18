@@ -79,7 +79,7 @@ const SearchFlight = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="px-5">
+    <div className="lg:px-5">
       <h1 className="text-[18px] font-bold text-center">Search Flight</h1>
 
       {/* search form */}

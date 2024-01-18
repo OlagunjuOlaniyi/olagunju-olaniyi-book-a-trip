@@ -21,7 +21,7 @@ const Payment = () => {
   //   });
   // };
   return (
-    <div className="px-5">
+    <div className="lg:px-5">
       <div className="flex items-center mb-3 ">
         <Link
           onClick={emptyBasket}
