@@ -264,7 +264,7 @@ const SearchFlight = () => {
               type="submit"
               onClick={handleSubmit}
               // onClick={() => navigate("/flightlistings")}
-              className="bg-[#223e7c] py-3 px-3 text-center text-[#fff] rounded-md w-[318px]"
+              className="bg-[#223e7c] py-3 px-3 text-center fixed bottom-3 text-[#fff] rounded-md w-[318px]"
             >
               Search Flight
             </button>
