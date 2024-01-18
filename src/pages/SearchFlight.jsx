@@ -3,46 +3,10 @@ import PlaneUp from "../assets/icons/plane.svg";
 import PlaneTo from "../assets/icons/PlaneTo.svg";
 import Passenger from "../assets/icons/airline-seat.png";
 import { Link, useNavigate } from "react-router-dom";
-import Location from "../components/DepartureFrom";
 import DepartureFrom from "../components/DepartureFrom";
 import DepartureTo from "../components/DepartureTo";
 import { useStateValue } from "../context/StateProvider";
-
-// const AutoSuggest = (initialValue) => {
-//   const [input, setInput] = useState('');
-//   const [matchingSuggestions, setMatchingSuggestions] = useState([]);
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const AutoSuggest = (initialValue) => {
-//   const [input, setInput] = useState('');
-//   const [matchingSuggestions, setMatchingSuggestions] = useState([]);
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const handleInputChange = (event) => {
-//     const inputValue = event.target.value.toLowerCase();
-//     setInput(inputValue);
-
-//     const filteredSuggestions = suggestions.filter((suggestion) =>
-//       suggestion.toLowerCase().startsWith(inputValue)
-//     );
-//     setMatchingSuggestions(filteredSuggestions);
-//   };
-
-//   const handleSuggestionClick = (suggestion) => {
-//     setInput(suggestion);
-//     setIsOpen(false);
-//   };
-
-//   return {
-//     input,
-//     matchingSuggestions,
-//     isOpen,
-//     setInput,
-//     setIsOpen,
-//     handleInputChange,
-//     handleSuggestionClick,
-//   };
-// }
+import { motion, useAnimation } from "framer-motion";
 
 const SearchFlight = () => {
   const [airports, setAirports] = useState([]);
@@ -63,7 +27,6 @@ const SearchFlight = () => {
     },
   ]);
 
-  const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
@@ -78,6 +41,11 @@ const SearchFlight = () => {
         [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
       };
     });
+  };
+
+  const variant = {
+    visible: { scale: 1 },
+    hidden: { scale: 0 },
   };
 
   // const departureSuggest = AutoSuggest("");
@@ -142,14 +110,31 @@ const SearchFlight = () => {
             </span>
           </div>
           {openFrom && (
-            <DepartureFrom
-              airports={airports}
-              closeFrom={setOpenFrom}
-              setCountryFrom={setAirports}
-              setSearchFrom={setSearchFrom}
-              setCodeFrom={setCodeFrom}
-            />
+            <motion.div
+              animate={{ scale: [0, 1] }}
+              transition={{ from: 90, delay: 0.2 }}
+            >
+              <DepartureFrom
+                airports={airports}
+                closeFrom={setOpenFrom}
+                setCountryFrom={setAirports}
+                setSearchFrom={setSearchFrom}
+                setCodeFrom={setCodeFrom}
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="50"
+              />
+            </motion.div>
           )}
+          {/* 
+          <motion.div transition={{ delay: 1 }}>
+            <h1>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. At et
+              impedit blanditiis? Ut, totam quibusdam ipsa veritatis velit ipsam
+              inventore molestias distinctio hic excepturi eius soluta repellat
+              voluptates! Reiciendis, aperiam!
+            </h1>
+          </motion.div> */}
 
           <div className="mt-3 relative">
             <input
@@ -165,13 +150,18 @@ const SearchFlight = () => {
             </span>
           </div>
           {openTo && (
-            <DepartureTo
-              airports={airports}
-              closeTo={setOpenTo}
-              setCountryFrom={setAirports}
-              setSearchTo={setSearchTo}
-              setCodeTo={setCodeTo}
-            />
+            <motion.div
+              animate={{ scale: [0, 1] }}
+              transition={{ from: 90, delay: 0.2 }}
+            >
+              <DepartureTo
+                airports={airports}
+                closeTo={setOpenTo}
+                setCountryFrom={setAirports}
+                setSearchTo={setSearchTo}
+                setCodeTo={setCodeTo}
+              />
+            </motion.div>
           )}
 
           <div className="mt-3 relative">

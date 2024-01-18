@@ -3,7 +3,6 @@ import ArrowBack from "../assets/icons/arrow-back.png";
 import Flightline from "../assets/icons/flightline.svg";
 import Time from "../assets/icons/date.svg";
 import Flightseat from "../assets/icons/flightseat.svg";
-import Flight from "../assets/icons/flight.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 
@@ -13,6 +12,12 @@ const Payment = () => {
     // dispatch some item into the data layer
     dispatch({
       type: "EMPTY_BASKET",
+    });
+  };
+  const emptySearch = () => {
+    // dispatch some item into the data layer
+    dispatch({
+      type: "EMPTY_SEARCH",
     });
   };
   return (
@@ -97,13 +102,13 @@ const Payment = () => {
 
             {/* button */}
             <div className="mt-8 flex justify-center">
-              <Link
-                onClick={emptyBasket}
-                to="/"
+              <a
+                // onClick={emptyBasket || emptySearch}
+                href="/"
                 className="bg-[#223e7c] fixed bottom-2 py-3 px-3 text-center text-[#fff] rounded-md w-[318px]"
               >
                 Pay N {bask.total}
-              </Link>
+              </a>
             </div>
           </div>
         );

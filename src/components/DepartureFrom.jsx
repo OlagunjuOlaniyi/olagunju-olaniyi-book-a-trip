@@ -3,13 +3,7 @@ import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
 import { useStateValue } from "../context/StateProvider";
 
-const DepartureFrom = ({
-  airports,
-  closeFrom,
-  setSearchFrom,
-  setCodeFrom,
-  setCountryFrom,
-}) => {
+const DepartureFrom = ({ airports, closeFrom, setSearchFrom, setCodeFrom }) => {
   const [{ search }, dispatch] = useStateValue();
 
   const handleClick = (Name, Code) => {
@@ -28,7 +22,7 @@ const DepartureFrom = ({
   };
 
   return (
-    <div className="bg-white py-3 px-4 rounded-md">
+    <div className="bg-white py-3 px-4 rounded-md mt-2">
       <div className="flex justify-center">
         <img src={popline} alt="" />
       </div>

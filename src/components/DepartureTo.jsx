@@ -23,7 +23,7 @@ const DepartureFrom = ({
   //   const arrival = AutoSuggest("");
 
   return (
-    <div className="bg-white py-3 px-4 rounded-md">
+    <div className="bg-white py-3 px-4 rounded-md mt-2">
       <div className="flex justify-center">
         <img src={popline} alt="" />
       </div>
