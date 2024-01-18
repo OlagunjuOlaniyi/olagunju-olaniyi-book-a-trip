@@ -9,7 +9,6 @@ import DepartureTo from "../components/DepartureTo";
 import CalendarDate from "../components/CalendarDate";
 import { useStateValue } from "../context/StateProvider";
 
-
 const SearchFlight = () => {
   const [airports, setAirports] = useState([]);
   const [count, setCount] = useState(0);
@@ -48,6 +47,10 @@ const SearchFlight = () => {
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    document.title = "Avitech - Search Flight";
   }, []);
 
   const handleSubmit = (e) => {

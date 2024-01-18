@@ -29,6 +29,10 @@ const FlightListings = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    document.title = "Avitech - Flight Listings";
+  }, []);
+
   // const navigate = useNavigate();
 
   return (
@@ -90,7 +94,7 @@ const FlightListings = () => {
         return <span>{sea.name}</span>;
       })}
       <div className="mt-6">
-        <div className="flex items-end gap-3">
+        <div className="flex items-end gap-2">
           <h1 className="text-[20px] font-bold">Available Flights</h1>
           <p className="text-[#223e7c] font-bold">
             {flightlisting.length} Flights

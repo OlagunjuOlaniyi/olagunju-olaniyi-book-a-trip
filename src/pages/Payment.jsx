@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ArrowBack from "../assets/icons/arrow-back.png";
 import Flightline from "../assets/icons/flightline.svg";
 import Time from "../assets/icons/date.svg";
@@ -14,6 +14,11 @@ const Payment = () => {
       type: "EMPTY_BASKET",
     });
   };
+
+  useEffect(() => {
+    document.title = "Avitech - Flight Payment";
+  }, []);
+
   // const emptySearch = () => {
   //   // dispatch some item into the data layer
   //   dispatch({
