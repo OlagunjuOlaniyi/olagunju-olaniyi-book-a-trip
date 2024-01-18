@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
 import Calendar from "react-calendar";

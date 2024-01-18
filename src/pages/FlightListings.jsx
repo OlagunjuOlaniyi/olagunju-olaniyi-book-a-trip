@@ -3,13 +3,12 @@ import ArrowBack from "../assets/icons/arrow-back.png";
 import Flightline from "../assets/icons/flightline.svg";
 import Time from "../assets/icons/date.svg";
 import Flightseat from "../assets/icons/flightseat.svg";
-import Flightline2 from "../assets/icons/flightline2.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import Listings from "../components/Listings";
 
 const FlightListings = () => {
-  const [{ basket, search }, dispatch] = useStateValue();
+  const [{ search }, dispatch] = useStateValue();
   const [flightlisting, setFlightlisting] = useState([]);
 
   async function fetchData() {
@@ -30,7 +29,7 @@ const FlightListings = () => {
     fetchData();
   }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div className="px-5">

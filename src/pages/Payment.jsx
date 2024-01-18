@@ -14,12 +14,12 @@ const Payment = () => {
       type: "EMPTY_BASKET",
     });
   };
-  const emptySearch = () => {
-    // dispatch some item into the data layer
-    dispatch({
-      type: "EMPTY_SEARCH",
-    });
-  };
+  // const emptySearch = () => {
+  //   // dispatch some item into the data layer
+  //   dispatch({
+  //     type: "EMPTY_SEARCH",
+  //   });
+  // };
   return (
     <div className="px-5">
       <div className="flex items-center mb-3 ">

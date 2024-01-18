@@ -1,7 +1,7 @@
 import React from "react";
 import Flightline2 from "../assets/icons/flightline2.svg";
 import { useStateValue } from "../context/StateProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Listings = ({ flight, index }) => {
   const [{ basket }, dispatch] = useStateValue();

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Close from "../assets/icons/close.svg";
 import popline from "../assets/icons/popline.svg";
-import { useStateValue } from "../context/StateProvider";
+// import { useStateValue } from "../context/StateProvider";
 
 const DepartureFrom = ({ airports, closeFrom, setSearchFrom, setCodeFrom }) => {
-  const [{ search }, dispatch] = useStateValue();
-
   const handleClick = (Name, Code) => {
     setSearchFrom(Name);
     setCodeFrom(Code);
