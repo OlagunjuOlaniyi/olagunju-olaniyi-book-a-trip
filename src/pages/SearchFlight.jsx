@@ -90,14 +90,14 @@ const SearchFlight = () => {
         <div className="mt-6">
           <div className="mt-3 relative">
             <input
-              className="w-[100%] py-3 px-8 rounded-sm bg-white"
+              className="w-[100%] py-3 px-9 rounded-sm bg-white text-[14px]"
               placeholder="From"
               value={searchFrom}
               onClick={() => setOpenFrom(true)}
               required
             />
 
-            <span className="absolute left-[12px] top-[20px]">
+            <span className="absolute left-[12px] top-[16px]">
               <img src={PlaneUp} className="text-[50px] z-10" alt="" />
             </span>
           </div>
@@ -113,14 +113,14 @@ const SearchFlight = () => {
 
           <div className="mt-3 relative">
             <input
-              className="w-[100%] py-3 px-8 rounded-sm bg-white"
+              className="w-[100%] py-3 px-9 rounded-sm bg-white text-[14px]"
               placeholder="To"
               value={searchTo}
               onClick={(e) => setOpenTo(true)}
               required
             />
 
-            <span className="absolute left-[12px] top-[20px]">
+            <span className="absolute left-[12px] top-[16px]">
               <img src={PlaneDown} className="text-[50px] z-10" alt="" />
             </span>
           </div>
@@ -136,13 +136,13 @@ const SearchFlight = () => {
 
           <div className="mt-3 relative">
             <input
-              className="w-[100%] py-3 px-8 rounded-sm"
+              className="w-[100%] py-3 px-9 rounded-sm text-[14px]"
               placeholder="Departure"
               value={value.toString().substring(0, 10)}
               onClick={(e) => setOpenDate(true)}
               required
             />
-            <span className="absolute left-[12px] top-[20px]">
+            <span className="absolute left-[12px] top-[16px]">
               <img src={Calender} className=" z-10" alt="" />
             </span>
           </div>

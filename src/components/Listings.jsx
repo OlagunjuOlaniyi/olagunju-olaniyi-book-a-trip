@@ -31,9 +31,9 @@ const Listings = ({ flight, index }) => {
           </h2>
           <p className="text-[#434455]">{flight.DepartureAirportCode}</p>
         </div>
-        <div className="flex text-[#72737f] text-[13px] flex-col items-center">
+        <div className="flex grow w-90 text-[#72737f] text-[13px] flex-col items-center">
           <p>{flight.StopOverDuration}</p>
-          <img src={Flightline2} alt="" />
+          <img className="w-[80%]" src={Flightline2} alt="" />
           <p>{flight.HasStopOver ? "Stopover Duration" : "Non-stop"}</p>
         </div>
         <div className="text-right flex-none">
@@ -44,7 +44,7 @@ const Listings = ({ flight, index }) => {
         </div>
       </div>
       {/*  */}
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between mt-6">
         <ul className="list-disc list-inside flex gap-2 text-[#72737f] text-[14px]">
           <li className="list-none">{flight.MarketingAirlineName}</li>
           <li>{flight.FlightClass}</li>
